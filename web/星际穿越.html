@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Interstellar Demo</title>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_501068_dwa53sgbracbx1or.css">
+	<style>
+	  /*CSS-reset*/
+	  body {
+	  	font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+	  }
+	  * {
+	  	margin: 0;
+	  	padding: 0;
+	  	box-sizing: border-box;
+		text-align: center;
+	  }
+	  ul, li, ol {
+	  	list-style: none;
+	  }
+	  a {
+	  	text-decoration: none;
+	  }
+	  .clearfix::after {
+	  	content: " ";
+	  	display: block;
+	  	clear: both;
+	  }
+	  .layout {
+	  	min-width: 1100px;
+	  	width: 1100px;
+	  	margin: 0 auto;
+	  }
+	  /*header*/
+	  html, body {
+	  	height: 100%;
+	  }
+	  header {
+	  	height: 100%;
+	  	min-width: 1100px;
+	  	background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551246549126&di=44c843ac17513d5f5b76401a0c47e51b&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D515019806%2C3862831160%26fm%3D214%26gp%3D0.jpg);
+	  	background-position: center center;
+			background-size:contain;
+	  	background-color: #001;
+	  	position: relative;
+	  }
+	  header > nav > a {
+	  	color: #eee;
+	    display: inline-block;
+	    float: left;
+	    font-size: 32px;
+	    padding: 48px;
+	    font-style: italic;
+	  }
+	  header >nav .navbar {
+	 	float: right;
+	 	padding: 64px 0;
+	  }
+	  header > nav .navbar a {
+	  	color: #eee;
+	  	padding: 8px;
+	  	font-weight: bold;
+	  }
+	  header > nav .navbar a:hover {
+	  	background-color: #999;
+	  	color: #000;
+	  	border-radius: 4px;
+	  }
+	  header > .poster-content h1 {
+	  	color: #fff;
+	  	font-size: 64px;
+	  	letter-spacing: 32px;
+	  	margin: 64px 0;
+	  }
+	  header > .poster-content h3 {
+	  	color: #fff;
+	  	font-size: 32px;
+	  	margin: 32px 0;
+	  }
+	  header > .poster-content a {
+	    color: #000;
+	    padding: 16px;
+	    background-color: #fff;
+	    display: inline-block;
+	    border-radius: 8px;
+	    opacity: .6;
+	  }
+	  header > .poster-content {
+	  	position: absolute;
+	  	top: 50%;
+	  	left: 50%;
+	  	margin-left: -550px;
+	  	margin-top: -220px;
+	  }
+	  main {
+	  	color: #fff;
+	  	background-color: #001;
+	  }
+	  main > section > h3 {
+	  	font-size: 36px;
+	  	padding: 48px;
+	  }
+	  .film-intro > p {
+	  	text-align: justify;
+	  	line-height: 32px;
+	  }
+	  .film-intro > ul li {
+	  	float: left;
+	  	width: 250px;
+	  	margin: 12.5px;
+	  	padding-bottom: 48px;
+	  }
+	  .film-intro > ul li img {
+	  	width: 250px;
+	  	height: 350px;
+	  	border-radius: 20px;
+	  	box-shadow: 1px 1px 2px 2px #fff;
+	  }
+	  .film-intro > ul li img:hover {
+	  	opacity: 0.5;
+	  }
+	  .film-intro > ul li h5 {
+	  	font-size: 24px;
+	  	padding: 12px;
+	  } 
+	  .film-intro .iconfont {
+	  	font-size: 24px;
+	  	color: white;
+	  	display: inline-block;
+	  	padding: 12px 6px;
+	  }
+	  .film-photo {
+	  	background-color: #000015;
+	  }
+	  .film-photo > a {
+	  	font-size: 24px;
+	  	background-color: #eee;
+	  	display: inline-block;
+	  	color: #000;
+	  	padding: 12px 24px;
+	  	border-radius: 6px;
+	  	opacity: .6;
+	  	margin-bottom: 48px;
+	  }
+	  .film-photo > a:hover {
+	  	background-color: #000;
+	  	color: #fff;
+	  }
+	  .film-photo > ul li {
+	  	float: left;
+	  	width: 500px;
+	  	margin: 25px;
+	  }
+	  .film-photo > ul li img{
+		width: 100%;
+		height: 300px;
+	  }
+	  .film-photo > ul li img:hover{
+		opacity: .3;
+	  }
+	  .film-photo > ul li h5{
+		font-size: 18px;
+		padding: 12px 18px;
+	  }
+	  .film-classic-line {
+	  	background-color: #000016;
+	  }
+	  .film-classic-line> p {
+	  	text-align: justify;
+	  	line-height: 32px;
+	  	padding: 0 32px;
+	  }
+	  .film-classic-line>p:nth-child(odd) {
+	  	padding-bottom: 32px;
+	  	line-height: 32px;
+	  }
+	  .film-director {
+	  	background-color: #000023
+	  }
+	  .film-director > h1,h2 {
+	  	padding: 36px;
+	  }
+	 .film-director > h6 {
+	  	padding-bottom: 36px;
+	  	font-size: 12px;
+	  }
+      .film-director > p {
+	  	text-align: justify;
+	  	line-height: 32px;
+	  	padding: 0 32px;
+	  }
+	  .film-director ol li img {
+	  	width: 100px;
+	  	height: 100px;
+	  	border-radius: 50%;
+	  	border: 3px solid #fff;
+	  	float: right;
+	  }
+	  .film-director ol li::after {
+	  	content: " ";
+	  	display: block;
+	  	clear: both;
+	  }
+	  .film-director ol li {
+	  	margin-bottom: 64px;
+	  }
+	  .film-director ol li h4, h5 {
+	  	padding: 4px;
+	  }
+	  .film-director ol li:nth-child(odd) {
+	  	padding-right: calc(50% - 50px);
+	  } 
+	  .film-director ol li:nth-child(even) {
+	  	padding-left: calc(50% - 50px);
+	  } 
+	  .film-director ol li:nth-child(even) img {
+	  	float: left;
+	  }
+	  .film-director ol li:nth-child(odd) h4 {
+	  	text-align: right;
+	  	margin-right: 120px;
+	  }
+	  .film-director ol li:nth-child(odd) h5 {
+	  	text-align: right;
+	  	margin-right: 120px;
+	  	padding-left: 60px;
+	  }
+	  .film-director ol li:nth-child(even) h4 {
+	  	text-align: left;
+	  	margin-left: 120px;
+	  }
+	  .film-director ol li:nth-child(even) h5 {
+	  	text-align: left;
+	  	margin-left: 120px;
+	  	padding-right: 60px;
+	  }
+	  .film-director ol li h4:nth-of-type(2) {
+	  	color: #ff0;
+	  }
+	  .film-director .time-line li {
+	  	position: relative;
+	  }
+	  .film-director .time-line li::before {
+	  	content: " ";
+	  	display: block;
+	  	border: 1px solid #fff;
+	  	height: 100%;
+	  	position: absolute;
+	  	left: 50%;
+	  	top: 100px;
+	  }
+	  footer {
+	  	color: #fff;
+	  	background-color: #001;
+	  }
+	  footer .message-box {
+	  	position: relative;
+	  	background-color: #000034;
+	  }
+	  footer .message-box input {
+	  	height: 50px;
+	  	width: 200px;
+		text-align: left;
+	  }
+	  footer .message-box input:nth-child(1) {
+	  	position: absolute;
+	  	margin-left: 150px;
+	  	margin-top: 64px;
+	  	left:0;
+	  	border-radius: 3px;
+	  }
+	  footer .message-box input:nth-child(2) {
+	  	position: absolute;
+	  	margin-left: 150px;
+	  	margin-top: 64px;
+	  	top: 50%;
+	  	left:0;
+	  	border-radius: 3px;
+	  }
+	  footer .message-box input:nth-child(3) {
+	  	position: absolute;
+	  	margin-left: 150px;
+	  	margin-top: 64px;
+	  	top: 25%;
+	  	left:0;
+	  	border-radius: 3px;
+	  }
+	  footer .message-box textarea:nth-child(4) {
+	  	height: 240px;
+	  	width: 500px;
+	  	margin: 64px 0 64px 280px;
+	  }
+	  footer .message-box input:nth-child(5) {
+	  	text-align: center;
+	  	height: 30px;
+	  	width: 80px;
+	  	border-radius: 3px;
+	  	position: absolute;
+	  	bottom: 5%;
+	  	right: 33%;
+	  }
+	  footer .copyright {
+	  	color: #fff;
+	  }
+	  footer .copyright :first-child {
+	  	float:left;
+	  	padding: 32px 36px;
+	  }
+	  footer .copyright :nth-child(2) {
+		float: right;
+		padding: 32px 36px;
+	  }
+	  footer .copyright :last-child {
+	  	padding: 32px 0;
+	  }
+	  
+	</style>
+</head>
+<body>
+   <header>
+	<nav class="layout clearfix">
+	  <a href="#111">INTERSTELLAR</a>
+	  <div class="navbar">
+	    <a href="#1">About</a>
+	    <a href="#2">User Reviews</a>
+	    <a href="#3">Literature Reviews</a>
+	    <a href="#4">Videos</a>
+	    <a href="#5">Photos</a>
+	  </div>
+	</nav>
+	<div class="poster-content layout">
+	  <h1>INTERSTELLAR</h1>
+	  <h3>Do Not Go Gentle Into That Good Night</h3>
+	  <a href="#0">The Science of Interstellar</a>
+	</div>
+  </header>
+  <main>
+    <section class="film-intro layout">
+	  <h3>Introduction</h3>
+	  <p>
+	    Earth's future has been riddled by disasters, famines, and droughts. 
+	    There is only one way to ensure mankind's survival: Interstellar  travel. 
+	    A newly discovered wormhole in the far reaches of our solar system allows a team of astronauts to go where no man has gone before, a planet that may have the right environment to sustain human life.
+	  </p>
+	  <h3>The film has a superior cast.</h3>
+	  <ul class="clearfix">
+	    <li>
+		  <a href="#pic1">
+		    <img src="http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p673.webp" alt="Christopher Nolan">
+		  </a>
+		  <h5>Director</h5>
+		  <h4>Christopher Nolan</h4>
+		  <a href="##">
+		    <span class="iconfont icon-facebook"></span>
+		    <span class="iconfont icon-linkedin"></span>
+		    <span class="iconfont icon-twitter"></span>
+		  </a>
+	    </li>
+	    <li>
+	      <a href="#pic2">
+		    <img src="http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1392653727.04.webp" alt="Matthew McConaughey">
+		  </a>
+		  <h5>Stars</h5>
+		  <h4>Matthew McConaughey</h4>
+		  <a href="##">
+		    <span class="iconfont icon-facebook"></span>
+		    <span class="iconfont icon-linkedin"></span>
+		    <span class="iconfont icon-twitter"></span>
+		  </a>
+	    </li>
+	    <li>
+	      <a href="#pic3">
+		    <img src="http://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p10467.webp" alt="Anne Hathaway">
+		  </a>
+		  <h5>Stars</h5>
+		  <h4>Anne Hathaway</h4>
+		  <a href="##">
+		    <span class="iconfont icon-facebook"></span>
+		    <span class="iconfont icon-linkedin"></span>
+		    <span class="iconfont icon-twitter"></span>
+		  </a>
+	    </li>
+	    <li>
+	      <a href="#pic4">
+		    <img src="http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1409566091.64.webp" alt="Jessica Chastain">
+		  </a>
+		  <h5>Stars</h5>
+		  <h4>Jessica Chastain</h4>
+		  <a href="##">
+		    <span class="iconfont icon-facebook"></span>
+		    <span class="iconfont icon-linkedin"></span>
+		    <span class="iconfont icon-twitter"></span>
+		  </a>
+	    </li>
+	    <li>
+	      <a href="#pic5">
+		    <img src="http://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p2199.webp">
+		  </a>
+		  <h5>Stars</h5>
+		  <h4>Caleb Casey Affleck</h4>
+		  <a href="##">
+		    <span class="iconfont icon-facebook"></span>
+		    <span class="iconfont icon-linkedin"></span>
+		    <span class="iconfont icon-twitter"></span>
+		  </a>
+	    </li>
+	    <li>
+	      <a href="#pic6">
+		    <img src="http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p56212.webp">
+		  </a>
+		  <h5>Stars</h5>
+		  <h4>Maurice Joseph Micklewhite</h4>
+		  <a href="##">
+		    <span class="iconfont icon-facebook"></span>
+		    <span class="iconfont icon-linkedin"></span>
+		    <span class="iconfont icon-twitter"></span>
+		  </a>
+	    </li>
+	    <li>
+	      <a href="#pic7">
+		    <img src="http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1414752272.85.webp">
+		  </a>
+		  <h5>Stars</h5>
+		  <h4>Mackenzie Christine Foy</h4>
+		  <a href="##">
+		    <span class="iconfont icon-facebook"></span>
+		    <span class="iconfont icon-linkedin"></span>
+		    <span class="iconfont icon-twitter"></span>
+		  </a>
+	    </li>
+	    <li>
+	      <a href="#pic8">
+		    <img src="http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p620.webp">
+		  </a>
+		  <h5>Stars</h5>
+		  <h4>Matthew Paige Damon</h4>
+		  <a href="##">
+		    <span class="iconfont icon-facebook"></span>
+		    <span class="iconfont icon-linkedin"></span>
+		    <span class="iconfont icon-twitter"></span>
+		  </a>
+	    </li>
+	  </ul>
+    </section>
+    <section class="film-photo layout">
+	  <h3>Slideshow</h3>
+	  <a href="#12312">View More</a>
+	  <ul class="clearfix">
+        <li>
+	      <a href="#pic9">
+		    <img src="http://img1.doubanio.com/view/photo/l/public/p2208890129.webp" alt="blackhole">
+		  </a>
+		  <h5>Black Hole</h5>
+	    </li>
+	    <li>
+	      <a href="#pic10">
+		    <img src="http://img3.doubanio.com/view/photo/l/public/p2234509041.webp" alt="Gargantua">
+		  </a>
+		  <h5>Gargantua</h5>
+	    </li>
+	    <li>
+	      <a href="#pic11">
+		    <img src="http://img1.doubanio.com/view/photo/l/public/p2211356947.webp" alt="Gargantua in a distance">
+		  </a>
+		  <h5>Gargantua in a distance</h5>
+	    </li>
+	    <li>
+	      <a href="#pic11">
+		    <img src="http://img3.doubanio.com/view/photo/l/public/p2210353396.webp" alt="Docking">
+		  </a>
+		  <h5>Docking</h5>
+	    </li>
+	    <li>
+	      <a href="#pic12">
+		    <img src="http://img3.doubanio.com/view/photo/l/public/p2211356951.webp" alt="Slingshot Effect">
+		  </a>
+		  <h5>Slingshot Effect</h5>
+	    </li>
+	    <li>
+	      <a href="#pic13">
+		    <img src="http://img1.doubanio.com/view/photo/l/public/p2209406479.webp" alt="Spaceship">
+		  </a>
+		  <h5>Spaceship</h5>
+	    </li>
+	    <li>
+	      <a href="#pic14">
+		    <img src="http://img3.doubanio.com/view/photo/l/public/p2211062954.webp" alt="Distort Reality">
+		  </a>
+		  <h5>Distort Reality</h5>
+	    </li>
+	    <li>
+	      <a href="#pic15">
+		    <img src="http://img3.doubanio.com/view/photo/l/public/p2185711620.webp" alt="Through the Wormhole">
+		  </a>
+		  <h5>Through the Wormhole</h5>
+	    </li>
+	    <li>
+	      <a href="#pic16">
+		    <img src="http://img3.doubanio.com/view/photo/l/public/p2203347450.webp" alt="Saturn">
+		  </a>
+		  <h5>Saturn</h5>
+	    </li>
+	    <li>
+	      <a href="#pic17">
+		    <img src="http://img3.doubanio.com/view/photo/l/public/p2194206886.webp" alt="STAY">
+		  </a>
+		  <h5>"STAY"</h5>
+	    </li>
+	    <li>
+	      <a href="#pic18">
+		    <img src="http://img3.doubanio.com/view/photo/l/public/p2294722585.webp" alt="Ghost">
+		  </a>
+		  <h5>"Ghost"</h5>
+	    </li>
+	    <li>
+	      <a href="#pic19">
+		    <img src="http://img3.doubanio.com/view/photo/l/public/p2210353126.webp" alt="Scientific Research">
+		  </a>
+		  <h5>Scientific Research</h5>
+	    </li>
+	  </ul>
+    </section>
+    <section class="film-classic-line layout">
+      <h3>Classic-line</h2>
+	  <p>
+	  Love is the one thing that transcends time and space.
+      </p>
+      <p>
+   	  爱是唯一可以超越时间与空间的事物。
+      </p>
+	  <p>
+	  We used to look up at the sky and wonder at our place in the stars, now we just look down and worry about our place in the dirt.
+	  </p>
+	  <p>
+ 	  我们曾经仰望星空並且期许总有一天可以登陆其他星球，但现在我们只能低头担心我们居住地的废土。
+	  </p>
+	  <p>
+	  Murphy's law doesn't mean that something bad will happen. It means that whatever can happen, will happen
+	  </p>
+	  <p>
+	  墨菲定律并非指的是那些变坏的事情必会发生…而是指那些能够发生的事情，就会发生。
+	  </p>
+	  <p>
+	  Cooper: Mankind was born on Earth. It was never meant to die here. 
+	  </p>
+	  <p>
+	  库珀：人类生在地球， 但绝不应该在这里灭亡。
+	  </p>
+	  <p>
+	  Brand: Couldn’t you’ve told her you were going to save the world? 
+Cooper: No. When you become a parent, one thing becomes really clear. And that’s that you want to make sure your children feel safe. 
+      </p>
+      <p>
+	  布兰德：你难道没告诉你女儿你是去拯救世界的吗？ 
+库珀：没有。当你为人父母了以后，你会非常清楚一件事，就是你得确保你的孩子有安全感。
+      </p>
+	  <p>
+	  Do not go gentle into that good night. Old age should burn and rave at close of day. Rage, Rage against the dying light.
+	  </p>
+	  <p>
+	  不要温和地走进那个良夜。白昼将尽，暮年仍应燃烧咆哮。怒斥吧，怒斥光的消逝。
+	  </p>
+	  <p>
+	  Cooper: We'll find a way; we always have.
+      </p>
+      <p>
+	  库珀：我们会找到办法的，我们总有办法。
+      </p>
+    </section>
+    <section class="film-director layout">
+      <h2>Director: Christopher Nolan</h2>
+      <p>
+      Best known for his cerebral, often nonlinear storytelling, acclaimed writer-director Christopher Nolan was born on July 30, 1970 in London, England. Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made.
+      </p>
+      <h1>Known For</h1>
+      <ol class="time-line">
+	    <li>
+	      <img src="http://img3.doubanio.com/view/photo/s_ratio_poster/public/p462657443.webp" alt="dark knight">
+		  <h4>2008</h4>
+		  <h4>The Dark Knight</h4>
+		  <h5>When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.</h5>
+	    </li>
+	    <li>
+	      <img src="http://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.webp" alt="Inception">
+		  <h4>2010</h4>
+		  <h4>Inception</h4>
+		  <h5>A thief, who steals corporate secrets through use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.</h5>
+	    </li>
+	    <li>
+	      <img src="http://img3.doubanio.com/view/photo/s_ratio_poster/public/p1706428744.webp" alt="The Dark Knight Rises">
+		  <h4>2012</h4>
+		  <h4>The Dark Knight Rises</h4>
+		  <h5>Eight years after the Joker's reign of anarchy, the Dark Knight, with the help of the enigmatic Catwoman, is forced from his exile to save Gotham City.</h5>
+	    </li>
+	    <li>
+	      <img src="http://img3.doubanio.com/view/photo/m/public/p2208323422.webp" alt="Interstellar">
+		  <h4>2014</h4>
+		  <h4>Interstellar</h4>
+		  <h5>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</h5>
+	    </li>
+	    <li>
+	      <img src="http://img3.doubanio.com/view/photo/m/public/p2499345742.webp" alt="Dunkirk">
+		  <h4>2017</h4>
+		  <h4>Dunkirk</h4>
+		  <h5>Allied soldiers from Belgium, the British Empire and France are surrounded by the Germannnnn Army, and evacuated during a fierce battle.</h5>
+	    </li>
+      </ol>
+      <h2>What is next surprise from Christofer Nolan?</h2>
+    </section>
+  </main>
+  <footer>
+	<section class="message-box layout clearfix">
+	  <input type="text" placeholder="Name" method="post">
+	  <input type="text" placeholder="password" method="post">
+	  <input type="text" placeholder="Email" method="post">
+	  <textarea value="Text Your Message" method="post">
+	  </textarea>
+	  <input type="submit" value="Submit" method="post">
+	</section>
+	<section class="copyright layout clearfix">
+	  <p>@copyright 2017</p>
+	  <p>Auther: Shaw Roc</p>
+	  <p>Email: coldplay1204@hotmail.com</p>
+	</section>
+  </footer>
+</body>
+</html>
